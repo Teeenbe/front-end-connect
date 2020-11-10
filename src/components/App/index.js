@@ -7,11 +7,14 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import Forum from "../Forum";
 // import Home from "../Home";
 import NewProfileForm from "../NewProfileForm";
+import Form from "../Form";
 
 function App() {
   return (
-    <Form />
-    <NewProfileForm />
+    <div>
+      <Form />
+      <NewProfileForm />
+    </div>
     // <Router>
     //   <div>
     //     <nav>
