@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // import Profiles from "../Profiles";
@@ -9,6 +10,7 @@ import NewProfileForm from "../NewProfileForm";
 
 function App() {
   return (
+    <Form />
     <NewProfileForm />
     // <Router>
     //   <div>
