@@ -1,4 +1,5 @@
 import "./App.css";
+import Form from "../Form";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         >
           React Docs R Here
         </a>
+        <Form />
       </header>
     </div>
   );
