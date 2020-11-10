@@ -4,15 +4,15 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // import Profiles from "../Profiles";
-// import Forum from "../Forum";
+import Forum from "../Forum";
 // import Home from "../Home";
 import NewProfileForm from "../NewProfileForm";
-import Form from "../Form";
+// import Form from "../Form";
 
 function App() {
   return (
     <div>
-      <Form />
+      <Forum />
       <NewProfileForm />
     </div>
     // <Router>

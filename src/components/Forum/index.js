@@ -1,13 +1,26 @@
 import React, { useState } from "react";
-import Form from "../Form";
+import Form from "./Form";
+import List from "./List";
 
-function Forum({}) {
+function Forum() {
   const [questionsArray, setQuestionsArray] = useState([]);
+
+  function addQuestion(newQuestion) {
+    const updatedQuestions = questionsArray.map((question) => ({
+      ...question,
+    }));
+    updatedQuestions.push(newQuestion);
+    setQuestionsArray(updatedQuestions);
+  }
+
   return (
-    <Form
-      questionsArray={questionsArray}
-      setQuestionsArray={setQuestionsArray}
-    />
+    <div>
+      <List />
+      <Form
+        questionsArray={questionsArray}
+        setQuestionsArray={setQuestionsArray}
+      />
+    </div>
   );
 }
 // function Input({ questionsArray }) {

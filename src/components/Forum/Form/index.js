@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form({ questionsArray }) {
+function Form({ setQuestionsArray }) {
   function handleClick() {
     setQuestionsArray([]);
   }
