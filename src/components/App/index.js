@@ -3,6 +3,7 @@ import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+=======
 import Profiles from "../Profiles";
 import Forum from "../Forum";
 import Home from "../Home";
@@ -37,7 +38,6 @@ function App() {
         </Switch>
       </div>
     </Router>
-
   );
 }
 
