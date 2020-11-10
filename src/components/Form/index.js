@@ -1,6 +1,9 @@
 import React from "react";
 
-function Form() {
+function Form({ questionsArray }) {
+  function handleClick() {
+    setQuestionsArray([]);
+  }
   return (
     <form>
       <fieldset>
@@ -21,7 +24,13 @@ function Form() {
           <option value="Functions">Functions</option>
         </select>
         <br />
-        <input type="submit" value="Submit" />
+        <input
+          onClick={() => {
+            handleClick();
+          }}
+          type="submit"
+          value="Submit"
+        />
         <br />
         <textarea
           id="question"
