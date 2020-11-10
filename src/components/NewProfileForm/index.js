@@ -30,7 +30,7 @@ const menteeExperience = (
   </select>
 );
 
-function ProfilesForm() {
+function NewProfileForm() {
   const [mentorOrMentee, setMentorOrMentee] = useState();
 
   function experienceInput(m) {
@@ -95,4 +95,4 @@ function ProfilesForm() {
   );
 }
 
-export default ProfilesForm;
+export default NewProfileForm;

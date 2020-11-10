@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import Profiles from "../Profiles";
 // import Forum from "../Forum";
 // import Home from "../Home";
-import ProfilesForm from "../ProfilesForm";
+import NewProfileForm from "../NewProfileForm";
 
 function App() {
   return (
-    <ProfilesForm />
+    <NewProfileForm />
     // <Router>
     //   <div>
     //     <nav>
