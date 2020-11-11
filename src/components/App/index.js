@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <nav>
           <Link className="Title" to="/">
-            Code Harmony
+            CONNECT
           </Link>
           <div className="Sidebar">
             <Link className="Profiles" to="/profiles">
