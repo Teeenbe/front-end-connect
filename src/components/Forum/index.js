@@ -2,24 +2,11 @@ import React, { useState } from "react";
 import Form from "./Form";
 import List from "./List";
 
-const questions = [
-  {
-    id: 0,
-    name: "Bryan",
-    topic: "React",
-    question: "sos",
-  },
-  {
-    id: 1,
-    name: "Jess",
-    topic: "Functions",
-    question: "why is this not working?",
-  },
-];
 
 
-function Forum() {
-  const [questionsArray, setQuestionsArray] = useState(questions);
+
+function Forum({questionsArray, setQuestionsArray}) {
+  
 
   function addQuestion(newQuestion) {
     const updatedQuestions = questionsArray.map((question) => ({

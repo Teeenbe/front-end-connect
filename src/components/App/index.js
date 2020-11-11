@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -6,8 +6,27 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Profiles from "../Profiles";
 import Forum from "../Forum";
 import Home from "../Home";
+import QuestionPage from "../Forum/QuestionPage";
+
+const questions = [
+  {
+    id: 0,
+    name: "Bryan",
+    topic: "React",
+    question: "sos",
+  },
+  {
+    id: 1,
+    name: "Jess",
+    topic: "Functions",
+    question: "why is this not working?",
+  },
+];
+
 
 function App() {
+  const [questionsArray, setQuestionsArray] = useState(questions);
+
   return (
     <Router>
       <div className="App">
@@ -28,9 +47,20 @@ function App() {
           <Route path="/profiles">
             <Profiles />
           </Route>
+
+          {questionsArray.map((q, index) => {
+            console.log(q, index);
+            return (
+              <Route path={`/Forum/${index}`}>
+                <QuestionPage question={q}/>
+              </Route>
+            )
+          })}
+
           <Route path="/forum">
-            <Forum />
+            <Forum questionsArray={questionsArray} setQuestionsArray={setQuestionsArray} />
           </Route>
+
           <Route path="/">
             <Home />
           </Route>
