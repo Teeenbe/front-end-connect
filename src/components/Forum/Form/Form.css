@@ -1,0 +1,33 @@
+* {
+  background-color: white;
+  color: orange;
+  font-family: Helvetica;
+}
+
+#Submit {
+  max-width: 500px;
+  padding: 20px 12px 10px 20px;
+  font-family: Helvetica;
+  margin: auto;
+}
+
+#Name {
+  display: block;
+  margin: 10px 10px 15px 10px;
+}
+
+#choose-topic {
+  width: 220px;
+  font-weight: bold;
+  float: centre;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
+#Submit {
+  border: none;
+  padding: 8px 15px 8px 15px;
+  background: #ff8500;
+  color: #fff;
+}

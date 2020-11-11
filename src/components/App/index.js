@@ -3,7 +3,6 @@ import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-=======
 import Profiles from "../Profiles";
 import Forum from "../Forum";
 import Home from "../Home";
@@ -11,19 +10,19 @@ import Home from "../Home";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="App">
         <nav>
-          <h1>
-            <Link to="/">Code Harmony</Link>
-          </h1>
-          <ul>
-            <li>
-              <Link to="/profiles">Profiles</Link>
-            </li>
-            <li>
-              <Link to="/forum">Forum</Link>
-            </li>
-          </ul>
+          <Link className="Title" to="/">
+            Code Harmony
+          </Link>
+          <div className="Sidebar">
+            <Link className="Profiles" to="/profiles">
+              Profiles
+            </Link>
+            <Link className="Forum" to="/forum">
+              Forum
+            </Link>
+          </div>
         </nav>
         <Switch>
           <Route path="/profiles">
