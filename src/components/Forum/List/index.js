@@ -1,9 +1,7 @@
 import React from "react";
 import ListItem from "../ListItem";
 
-
-
-function List({questionsArray}) {
+function List({ questionsArray }) {
   return (
     <div>
       {questionsArray.map((item) => {
@@ -15,6 +13,7 @@ function List({questionsArray}) {
               Question={item.question}
               key={item.id}
             />
+            <br />
           </div>
         );
       })}

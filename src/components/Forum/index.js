@@ -5,18 +5,17 @@ import List from "./List";
 const questions = [
   {
     id: 0,
-    name: "Bryan",
+    name: "Tom Bennett",
     topic: "React",
-    question: "sos",
+    question: "",
   },
   {
     id: 1,
-    name: "Jess",
+    name: "Jessica Wilson-Leigh",
     topic: "Functions",
-    question: "why is this not working?",
+    question: "",
   },
 ];
-
 
 function Forum() {
   const [questionsArray, setQuestionsArray] = useState(questions);
@@ -30,14 +29,10 @@ function Forum() {
   }
 
   return (
-    <div>
+    <div id="formSection">
       <h1 id="questionForum">Question Forum</h1>
-      <List 
-      questionsArray={questionsArray}
-      />
-      <Form 
-        addQuestion = {addQuestion}
-      />
+      <List questionsArray={questionsArray} />
+      <Form addQuestion={addQuestion} />
     </div>
   );
 }

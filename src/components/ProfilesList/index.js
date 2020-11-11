@@ -17,16 +17,20 @@ function ProfilesList({ profiles }) {
           emailAddress,
         }) => {
           return (
-            <ProfileItem
-              key={id}
-              type={type}
-              firstName={firstName}
-              lastName={lastName}
-              aboutMe={aboutMe}
-              interests={interests}
-              experience={experience}
-              emailAddress={emailAddress}
-            />
+            <div>
+              <br />
+              <ProfileItem
+                key={id}
+                type={type}
+                firstName={firstName}
+                lastName={lastName}
+                aboutMe={aboutMe}
+                interests={interests}
+                experience={experience}
+                emailAddress={emailAddress}
+              />
+              <br />
+            </div>
           );
         }
       )}
