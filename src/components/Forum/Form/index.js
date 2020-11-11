@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Form.css";
 
-function Form({ setQuestionsArray }) {
-  function handleClick() {
-    setQuestionsArray([]);
+
+function Form({addQuestion}) {
+  const [nameInput, setNameInput] = useState('');
+  const [topicInput, setTopicInput] = useState('');
+  const [questionInput, setQuestionInput] = useState('');
+
+
+  function handleSubmit(event) {
+    const updateState = { name:nameInput, topic:topicInput, question:questionInput }
+    console.log(updateState);
+    event.preventDefault();
+    addQuestion(updateState);
+    event.target.reset();
   }
+
   return (
-    <form id="Submit">
+    <form id="Submit" onSubmit = {(event) => handleSubmit(event)}>
       <fieldset>
         <legend>Submit a new question:</legend>
         <br />
         <label id="Name">
           Name:
-          <input id="NameInput" type="text" name="name" />
+          <input id="NameInput" type="text" name="name" onChange={(e) => setNameInput(e.target.value)}/>
         </label>
         <br />
-        <select id="choose-topic">
+        <select id="topicInput" onChange={(e) => setTopicInput(e.target.value)}>
           <option value="">--Please select question topic--</option>
           <option value="if-statement">If Statement</option>
           <option value="Arrays">Arrays</option>
@@ -26,19 +37,17 @@ function Form({ setQuestionsArray }) {
         </select>
         <br />
         <input
-          onClick={() => {
-            handleClick();
-          }}
           type="submit"
           value="Submit"
           id="Submit"
         />
         <br />
         <textarea
-          id="question"
+          id="questionInput"
           rows="5"
           cols="50"
           placeholder="Write your question here..."
+          onChange={(e) => setQuestionInput(e.target.value)}
         ></textarea>
         <br />
       </fieldset>

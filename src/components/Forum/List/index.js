@@ -1,30 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import ListItem from "../ListItem";
 
-const questionsArray = [
-  {
-    name: "Bryan",
-    topic: "React",
-    question: "sos",
-  },
-  {
-    name: "Jess",
-    topic: "Functions",
-    question: "why is this not working?",
-  },
-];
 
-function List() {
+
+function List({questionsArray}) {
   return (
     <div>
-      {questionsArray.map((item, index) => {
+      {questionsArray.map((item) => {
         return (
           <div>
             <ListItem
               Name={item.name}
               Topic={item.topic}
               Question={item.question}
-              key={index}
+              key={item.id}
             />
           </div>
         );
