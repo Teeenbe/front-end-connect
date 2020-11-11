@@ -6,15 +6,16 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Profiles from "../Profiles";
 import Forum from "../Forum";
 import Home from "../Home";
+import TitleImage from "./TitleImage";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <nav>
-          <Link className="Title" to="/">
-            CONNECT
-          </Link>
+          <a href="/">
+            <TitleImage id="TitleImage" />
+          </a>
           <div className="Sidebar">
             <Link className="Profiles" to="/profiles">
               Profiles
