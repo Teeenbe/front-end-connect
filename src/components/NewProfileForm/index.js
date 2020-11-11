@@ -1,28 +1,9 @@
 import React, { useState } from "react";
 import "./Form.css";
 
-const mentorExperience = (
-  <select id="experience">
-    <option value="">How many years?</option>
-    <option value="0-5">0 - 5</option>
-    <option value="5-10">5 - 10</option>
-    <option value="10-15">10 - 15</option>
-    <option value="15+">15 +</option>
-  </select>
-);
-
-const menteeExperience = (
-  <select id="experience">
-    <option value="">Any previous experience?</option>
-    <option value="none">None</option>
-    <option value="a-little">A little</option>
-    <option value="a-lot">A lot</option>
-    <option value="extensive">Extensive</option>
-  </select>
-);
-
-const aNewProfile = {
-  id: 0,
+// user profile template
+const blankUser = {
+  id: 3,
   type: "",
   firstName: "",
   lastName: "",
@@ -32,35 +13,21 @@ const aNewProfile = {
   emailAddress: "",
 };
 
+const interests = [
+  "Front-end",
+  "Back-end",
+  "DevOps",
+  "Node",
+  "JavaScript",
+  "Game development",
+];
+
 function NewProfileForm({ addProfile }) {
-  const [mentorOrMentee, setMentorOrMentee] = useState();
-  const [newProfile, setNewProfile] = useState();
-
-  const interests = [
-    "Front-end",
-    "Back-end",
-    "DevOps",
-    "Node",
-    "JavaScript",
-    "Game development",
-  ];
-
+  // State for mentor/mentee drop-down and current form state
+  const [newProfile, setNewProfile] = useState(blankUser);
   const [interestsChecked, setInterestsChecked] = useState(
     new Array(interests.length).fill(false)
   );
-
-  const interestsIndexes = [];
-  interestsChecked.forEach((v, index) => {
-    if (v === true) {
-      interestsIndexes.push(index);
-    }
-  });
-  const tickedInterests = interests.filter((interest, index) => {
-    if (interestsIndexes.includes(index)) {
-      return interest;
-    }
-  });
-  console.log(tickedInterests);
 
   function handleChange(i) {
     const updatedBooleans = [...interestsChecked];
@@ -68,22 +35,67 @@ function NewProfileForm({ addProfile }) {
     setInterestsChecked(updatedBooleans);
   }
 
-  function experienceInput(m) {
-    if (m === "mentor") {
-      setMentorOrMentee(mentorExperience);
-    } else if (m === "mentee") {
-      setMentorOrMentee(menteeExperience);
-    } else {
-      setMentorOrMentee(null);
+  function populateObject(event) {
+    setNewProfile({ ...newProfile, [event.target.id]: event.target.value });
+  }
+
+  //
+  const mentorExperience = (
+    <select id="experience" onChange={(event) => populateObject(event)}>
+      <option value="">How many years?</option>
+      <option value="0-5">0 - 5</option>
+      <option value="5-10">5 - 10</option>
+      <option value="10-15">10 - 15</option>
+      <option value="15+">15 +</option>
+    </select>
+  );
+
+  const menteeExperience = (
+    <select id="experience" onChange={(event) => populateObject(event)}>
+      <option value="">Any previous experience?</option>
+      <option value="none">None</option>
+      <option value="a-little">A little</option>
+      <option value="a-lot">A lot</option>
+      <option value="extensive">Extensive</option>
+    </select>
+  );
+
+  function renderExperience() {
+    switch (newProfile.type) {
+      case "Mentor":
+        return mentorExperience;
+      case "Mentee":
+        return menteeExperience;
+      default:
+        return null;
     }
   }
 
-  function handleSubmit() {
-    setNewProfile();
+  function experienceInput(m) {
+    setNewProfile({ ...newProfile, type: m });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const interestsIndexes = [];
+    interestsChecked.forEach((v, index) => {
+      if (v === true) {
+        interestsIndexes.push(index);
+      }
+    });
+    const tickedInterests = interests.filter((interest, index) => {
+      if (interestsIndexes.includes(index)) {
+        return interest;
+      }
+    });
+
+    addProfile({ ...newProfile, interests: tickedInterests });
+    setNewProfile(blankUser);
+    event.target.reset();
   }
 
   return (
-    <form onSubmit={() => handleSubmit()}>
+    <form id="new-profile-form" onSubmit={(event) => handleSubmit(event)}>
       <fieldset>
         <legend>New Profile:</legend>
         <label htmlFor="mentor-or-mentee">
@@ -95,34 +107,48 @@ function NewProfileForm({ addProfile }) {
             onChange={(e) => experienceInput(e.target.value)}
           >
             <option value="">--Please choose an option--</option>
-            <option value="mentor">Mentor</option>
-            <option value="mentee">Mentee</option>
+            <option value="Mentor">Mentor</option>
+            <option value="Mentee">Mentee</option>
           </select>
         </label>
         <br />
-        <label htmlFor="first-name">
+        <label htmlFor="firstName">
           First Name
           <br />
+          <input id="firstName" onChange={(event) => populateObject(event)} />
+        </label>
+        <br />
+        <label htmlFor="lastName">
+          Last Name
+          <br />
+          <input id="lastName" onChange={(event) => populateObject(event)} />
+        </label>
+        <br />
+        <label htmlFor="emailAddress">
+          Email Address
+          <br />
           <input
-            id="first-name"
-            onChange={(event) => console.log(event.target.id)}
+            id="emailAddress"
+            onChange={(event) => populateObject(event)}
           />
         </label>
         <br />
-        <label htmlFor="last-name">
-          Last Name
+        <br />
+        <label htmlFor="experience">
+          Experience
           <br />
-          <input id="last-name" />
+          {renderExperience()}
         </label>
         <br />
-        <label htmlFor="about-me">
+        <label htmlFor="aboutMe">
           About Me
           <br />
           <textarea
-            id="about-me"
+            id="aboutMe"
             rows="5"
             cols="50"
             placeholder="Write a little about yourself..."
+            onChange={(event) => populateObject(event)}
           ></textarea>
         </label>
         <br />
@@ -134,26 +160,13 @@ function NewProfileForm({ addProfile }) {
               <input
                 type="checkbox"
                 id={interest}
-                value={interest}
+                value={interestsChecked[index]}
                 onChange={() => handleChange(index)}
               />
               <label htmlFor={interest}>{interest}</label>
             </div>
           );
         })}
-        <br />
-        <label htmlFor="experience">
-          Experience
-          <br />
-          {mentorOrMentee}
-        </label>
-        <br />
-        <br />
-        <label htmlFor="contact-info">
-          Email Address
-          <br />
-          <input id="contact-info" />
-        </label>
         <br />
         <br />
         <input type="submit" value="Submit" />
