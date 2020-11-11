@@ -15,6 +15,7 @@ function Forum() {
 
   return (
     <div>
+      <h1 id="questionForum">Question Forum</h1>
       <List />
       <Form
         questionsArray={questionsArray}

@@ -1,8 +1,133 @@
-.App {
+.Title {
+  position: absolute;
+  width: 400px;
+  height: 108px;
+  left: 48px;
+  top: 18px;
+
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 108px;
+  letter-spacing: -0.045em;
+
+  color: orange;
+}
+
+.Title:link {
+  text-decoration: none;
+}
+
+.Home {
+  color: white;
+}
+
+.Laura {
+  width: auto;
+  height: auto;
+}
+
+.Mentor {
+  position: absolute;
+  width: 430px;
+  height: 70px;
+  left: 70px;
+  top: 600px;
+
+  background: #18a2ef;
+  border: 0.5px darkgrey;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 85px;
+  letter-spacing: -0.045em;
+
+  color: #fffdfd;
+
+  text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+}
+
+.Mentor:link {
+  text-decoration: none;
+}
+
+.Forum {
+  position: absolute;
+  width: 186px;
+  height: 44px;
+  left: 1090px;
+  top: 28px;
+
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 76px;
+  letter-spacing: -0.045em;
+
+  color: #a3a1a1;
+}
+
+.Forum:link {
+  text-decoration: none;
+}
+
+.Sidebar {
+  text-align: right;
+  margin: auto;
+  padding: 10px;
+  list-style-type: none;
+}
+
+.Profiles {
+  position: absolute;
+  width: 177px;
+  height: 129px;
+  left: 1250px;
+  top: 28px;
+
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 76px;
+  letter-spacing: -0.045em;
+
+  color: darkgrey;
+}
+
+.Profiles:link {
+  text-decoration: none;
+}
+
+* {
+  background: white;
   text-align: center;
 }
 
-.App-logo {
+.support {
+  position: absolute;
+  width: 450px;
+  height: 300px;
+  left: 56px;
+  top: 400px;
+
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 55px;
+  letter-spacing: -0.045em;
+
+  color: grey;
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -11,9 +136,9 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,8 +147,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
+} */
+/* 
 .App-link {
   color: #61dafb;
 }
@@ -39,4 +164,4 @@
 
 label {
   font-size: 20px;
-}
+} */

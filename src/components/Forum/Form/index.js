@@ -1,17 +1,18 @@
 import React from "react";
+import "./Form.css";
 
 function Form({ setQuestionsArray }) {
   function handleClick() {
     setQuestionsArray([]);
   }
   return (
-    <form>
+    <form id="Submit">
       <fieldset>
         <legend>Submit a new question:</legend>
         <br />
-        <label>
+        <label id="Name">
           Name:
-          <input type="text" name="name" />
+          <input id="NameInput" type="text" name="name" />
         </label>
         <br />
         <select id="choose-topic">
@@ -30,6 +31,7 @@ function Form({ setQuestionsArray }) {
           }}
           type="submit"
           value="Submit"
+          id="Submit"
         />
         <br />
         <textarea

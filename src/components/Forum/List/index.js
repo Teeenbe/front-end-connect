@@ -4,12 +4,12 @@ import ListItem from "../ListItem";
 const questionsArray = [
   {
     name: "Bryan",
-    topic: "if statement",
-    question: "WHY?",
+    topic: "React",
+    question: "sos",
   },
   {
     name: "Jess",
-    topic: "functions",
+    topic: "Functions",
     question: "why is this not working?",
   },
 ];
@@ -19,15 +19,16 @@ function List() {
     <div>
       {questionsArray.map((item, index) => {
         return (
-          <ListItem
-            Name={item.name}
-            Topic={item.topic}
-            Question={item.question}
-            key={index}
-          />
+          <div>
+            <ListItem
+              Name={item.name}
+              Topic={item.topic}
+              Question={item.question}
+              key={index}
+            />
+          </div>
         );
       })}
-      ;
     </div>
   );
 }
