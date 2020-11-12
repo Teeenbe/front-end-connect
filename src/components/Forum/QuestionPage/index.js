@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Comment from "../Comment";
-import Delete from "../DeleteButton";
+import DeleteComment from "../DeleteButton";
 
 function QuestionPage({ question }) {
   const [comment, setComment] = useState("");
@@ -11,7 +11,7 @@ function QuestionPage({ question }) {
       <p>Question</p>
       <p>{question.question}</p>
       <p>{question.name}</p>
-      <Comment text={comment} />
+      <Comment text={comment} setComment={setComment}/>
       <textarea
         id="comment"
         rows="5"
@@ -20,6 +20,7 @@ function QuestionPage({ question }) {
         onChange={(e) => setText(e.target.value)}
       ></textarea>
       <button onClick={() => setComment(text)}>Submit</button>
+      
     </div>
   );
 }

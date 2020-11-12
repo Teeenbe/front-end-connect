@@ -1,11 +1,13 @@
 import React from "react";
-import Delete from "../DeleteButton";
+import DeleteComment from "../DeleteButton";
+import QuestionPage from "../QuestionPage";
 
-function Comment({ text }) {
+
+function Comment({ text, setComment }) {
   return (
     <div>
       <p>{text}</p>
-      <button>Delete Comment</button>
+      <button onClick={() => setComment("")}>Delete</button>
     </div>
   );
 }
