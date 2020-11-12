@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 
-function QuestionPage({ question }) {
-  const [comment, setComment] = useState([{
-    index: 0,
-    text: "no comment yet" 
-  }]);
+function QuestionPage({ question, id }) {
+  const [comments, setComments] = useState([
+    {
+      index: 0,
+      text: "no comment yet",
+    },
+  ]);
   const [text, setText] = useState("");
 
-  function removeComment(index){
-    setComment([
-      ...comment.slice(0,index),
-      ...comment.slice(index+1)
-    ])
+  async function getComments() {
+    const res = await fetch(`http://localhost:5000/forum/${id}`);
+    const { payload } = await res.json();
+    console.log(payload);
+    setComments(payload);
+  }
+
+  useEffect(() => {
+    getComments();
+  }, []);
+
+  async function removeComment(commentId) {
+    const res = await fetch(`http://localhost:5000/forum/${id}/${commentId}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+    console.log(data);
+    getComments();
+    // setComments([...comments.slice(0, id), ...comments.slice(id + 1)]);
   }
 
   return (
@@ -20,7 +36,7 @@ function QuestionPage({ question }) {
       <p>Question</p>
       <p>{question.question}</p>
       <p>{question.name}</p>
-      <Comment list={comment} deleteFn = {removeComment} />
+      <Comment list={comments} deleteFn={removeComment} />
       <textarea
         id="comment"
         rows="5"
@@ -28,8 +44,14 @@ function QuestionPage({ question }) {
         placeholder="Leave your Comment..."
         onChange={(e) => setText(e.target.value)}
       ></textarea>
-      <button onClick={() => setComment([...comment, { index: comment.length, text: text }])}>Submit</button>
-      {console.log(comment)}
+      <button
+        onClick={() =>
+          setComments([...comments, { id: comments.length, text: text }])
+        }
+      >
+        Submit
+      </button>
+      {console.log(comments)}
     </div>
   );
 }

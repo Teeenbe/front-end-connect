@@ -53,7 +53,7 @@ function App() {
             console.log(q, index);
             return (
               <Route path={`/forum/${index}`}>
-                <QuestionPage question={q} />
+                <QuestionPage question={q} id={index} />
               </Route>
             );
           })}
