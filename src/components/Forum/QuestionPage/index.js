@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import Comment from "./Comment";
 
 function QuestionPage({ question }) {
-  const [comment, setComment] = useState([{
-    index: 0,
-    text: "no comment yet" 
-  }]);
+  const [comment, setComment] = useState([
+    {
+      index: 0,
+      text: "no comment yet",
+    },
+  ]);
   const [text, setText] = useState("");
 
-  function removeComment(index){
-    setComment([
-      ...comment.slice(0,index),
-      ...comment.slice(index+1)
-    ])
+  function removeComment(index) {
+    setComment([...comment.slice(0, index), ...comment.slice(index + 1)]);
   }
 
-  function editComment(index){
-    setComment()
+  function editComment(index) {
+    if (setComment(text, index)) {
+      return setComment(text, index);
+    }
   }
 
   return (
@@ -24,7 +25,7 @@ function QuestionPage({ question }) {
       <p>Question</p>
       <p>{question.question}</p>
       <p>{question.name}</p>
-      <Comment list={comment} deleteFn = {removeComment} editFn={editComment} />
+      <Comment list={comment} deleteFn={removeComment} editFn={editComment} />
       <textarea
         id="comment"
         rows="5"
@@ -32,7 +33,13 @@ function QuestionPage({ question }) {
         placeholder="Leave your Comment..."
         onChange={(e) => setText(e.target.value)}
       ></textarea>
-      <button onClick={() => setComment([...comment, { index: comment.length, text: text }])}>Submit</button>
+      <button
+        onClick={() =>
+          setComment([...comment, { index: comment.length, text: text }])
+        }
+      >
+        Submit
+      </button>
       {console.log(comment)}
     </div>
   );

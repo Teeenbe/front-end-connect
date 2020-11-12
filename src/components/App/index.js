@@ -26,7 +26,7 @@ const questions = [
 ];
 
 function App() {
-  const [questionsArray, setQuestionsArray] = useState([questions]);
+  const [questionsArray, setQuestionsArray] = useState(questions);
 
   return (
     <Router>
