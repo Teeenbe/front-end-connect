@@ -32,7 +32,7 @@ const profilesArray = [
     firstName: "Ben",
     lastName: "Lee",
     aboutMe: "Makes crazy jingles for SoC.",
-    interests: ["Command Line"],
+    interests: ["Front-end"],
     experience: "0-5 years",
     emailAddress: "ben@soc.co.uk",
   },
