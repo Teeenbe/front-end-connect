@@ -1,7 +1,6 @@
 import React from "react";
 import CommentItem from "../CommentItem";
 
-
 function Comment({ list, deleteFn }) {
   return (
     <div>
