@@ -15,12 +15,16 @@ function QuestionPage({ question }) {
     ])
   }
 
+  function editComment(index){
+    setComment()
+  }
+
   return (
     <div>
       <p>Question</p>
       <p>{question.question}</p>
       <p>{question.name}</p>
-      <Comment list={comment} deleteFn = {removeComment} />
+      <Comment list={comment} deleteFn = {removeComment} editFn={editComment} />
       <textarea
         id="comment"
         rows="5"
