@@ -12,7 +12,7 @@ function Form({ addQuestion }) {
       topic: topicInput,
       question: questionInput,
     };
-    console.log(updateState);
+    // console.log(updateState);
     event.preventDefault();
     addQuestion(updateState);
     event.target.reset();
