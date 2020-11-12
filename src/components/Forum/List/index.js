@@ -2,7 +2,7 @@ import React from "react";
 import ListItem from "../ListItem";
 import { Link } from "react-router-dom";
 
-function List({ questionsArray }) {
+function List({ questionsArray, deleteQuestion }) {
   return (
     <div>
       {questionsArray.map((item, index) => {
@@ -16,6 +16,7 @@ function List({ questionsArray }) {
                 key={item.id}
               />
             </Link>
+            <button onClick={() => deleteQuestion(index)}>Delete</button>
           </div>
         );
       })}

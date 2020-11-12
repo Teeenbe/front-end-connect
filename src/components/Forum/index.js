@@ -33,7 +33,7 @@ function Forum({ questionsArray, setQuestionsArray }) {
     const updatedQuestions = questionsArray.map((question) => ({
       ...question,
     }));
-    updatedQuestions.push(newQuestion);
+    updatedQuestions.unshift(newQuestion);
     console.log(updatedQuestions);
     await fetch("http://localhost:5000/forum/", {
       method: "POST",
@@ -46,10 +46,19 @@ function Forum({ questionsArray, setQuestionsArray }) {
     getQuestions();
   }
 
+  async function deleteQuestion(id) {
+    const res = await fetch(`http://localhost:5000/forum/${id}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+    console.log(data);
+    getQuestions();
+  }
+
   return (
     <div id="formSection">
       <h1 id="questionForum">Question Forum</h1>
-      <List questionsArray={questionsArray} />
+      <List questionsArray={questionsArray} deleteQuestion={deleteQuestion} />
       <Form addQuestion={addQuestion} />
     </div>
   );

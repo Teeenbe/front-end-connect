@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 
-function QuestionPage({ question }) {
-  const [comment, setComment] = useState([
+function QuestionPage({ question, id }) {
+  const [comments, setComments] = useState([
     {
       index: 0,
       text: "no comment yet",
@@ -10,14 +10,25 @@ function QuestionPage({ question }) {
   ]);
   const [text, setText] = useState("");
 
-  function removeComment(index) {
-    setComment([...comment.slice(0, index), ...comment.slice(index + 1)]);
+  async function getComments() {
+    const res = await fetch(`http://localhost:5000/forum/${id}`);
+    const { payload } = await res.json();
+    console.log(payload);
+    setComments(payload);
   }
 
-  function editComment(index) {
-    if (setComment(text, index)) {
-      return setComment(text, index);
-    }
+  useEffect(() => {
+    getComments();
+  }, []);
+
+  async function removeComment(commentId) {
+    const res = await fetch(`http://localhost:5000/forum/${id}/${commentId}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+    console.log(data);
+    getComments();
+    // setComments([...comments.slice(0, id), ...comments.slice(id + 1)]);
   }
 
   return (
@@ -25,7 +36,7 @@ function QuestionPage({ question }) {
       <p>Question</p>
       <p>{question.question}</p>
       <p>{question.name}</p>
-      <Comment list={comment} deleteFn={removeComment} editFn={editComment} />
+      <Comment list={comments} deleteFn={removeComment} />
       <textarea
         id="comment"
         rows="5"
@@ -35,12 +46,12 @@ function QuestionPage({ question }) {
       ></textarea>
       <button
         onClick={() =>
-          setComment([...comment, { index: comment.length, text: text }])
+          setComments([...comments, { id: comments.length, text: text }])
         }
       >
         Submit
       </button>
-      {console.log(comment)}
+      {console.log(comments)}
     </div>
   );
 }
