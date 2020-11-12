@@ -3,7 +3,7 @@ import ListItem from "../ListItem";
 import QuestionPage from "../QuestionPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function List({questionsArray}) {
+function List({ questionsArray }) {
   return (
     //<Router>
 

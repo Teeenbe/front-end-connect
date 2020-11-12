@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
+import TitleImage from "./TitleImage";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Profiles from "../Profiles";
 import Forum from "../Forum";
 import Home from "../Home";
+
 import QuestionPage from "../Forum/QuestionPage";
 
 const questions = [
@@ -31,9 +33,9 @@ function App() {
     <Router>
       <div className="App">
         <nav>
-          <Link className="Title" to="/">
-            Code Harmony
-          </Link>
+          <a href="/">
+            <TitleImage id="TitleImage" />
+          </a>
           <div className="Sidebar">
             <Link className="Profiles" to="/profiles">
               Profiles

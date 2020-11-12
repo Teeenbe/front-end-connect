@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import NewProfileForm from "../NewProfileForm";
-import ProfilesList from "../ProfilesList";
+import NewProfileForm from "./NewProfileForm";
+import ProfilesList from "./ProfilesList";
 
 /* DATA TO DISPLAY
 
@@ -53,7 +53,8 @@ function Profiles() {
 
   function addProfile(newProfile) {
     const updatedProfiles = profiles.map((profile) => ({ ...profile }));
-    updatedProfiles.push(newProfile);
+    updatedProfiles.push({ ...newProfile });
+    console.log(newProfile);
     setProfiles(updatedProfiles);
   }
 
