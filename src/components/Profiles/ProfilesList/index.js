@@ -16,15 +16,15 @@ function ProfilesList({ profiles }) {
         <option value="" disabled selected>
           All
         </option>
-        <option value="front-end">Front-end</option>
-        <option value="back-end">Back-end</option>
-        <option value="dev-ops">DevOps</option>
-        <option value="node">Node</option>
-        <option value="javascript">JavaScript</option>
-        <option value="game-development">Game Development</option>
+        <option value="Front-end">Front-end</option>
+        <option value="Back-end">Back-end</option>
+        <option value="DevOps">DevOps</option>
+        <option value="Node">Node</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="Game Development">Game Development</option>
       </select>
-      {profiles
-        .filter(({ interests }) => interests.includes(selectedInterest))
+      {console.log(selectedInterest)}
+      {profiles.filter(({ interests }) => interests.includes(selectedInterest))
         .map(
           ({
             id,
@@ -59,7 +59,4 @@ function ProfilesList({ profiles }) {
 }
 
 export default ProfilesList;
-// {names.filter(name => name.includes('J')).map(filteredName => (
-//   <li>
-//     {filteredName}
-//   </li>
+
