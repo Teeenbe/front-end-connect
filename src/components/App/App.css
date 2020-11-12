@@ -1,3 +1,7 @@
+.App {
+  margin: left;
+}
+
 .Title {
   position: absolute;
   width: 400px;
@@ -19,13 +23,16 @@
   text-decoration: none;
 }
 
-.Home {
-  color: white;
+.TitleImage {
+  position: absolute;
+  width: 500px;
+  height: 200px;
+  left: 0;
+  top: 0;
 }
 
-.Laura {
-  width: auto;
-  height: auto;
+.Home {
+  color: white;
 }
 
 .Mentor {
