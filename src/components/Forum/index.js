@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "./Form";
 import List from "./List";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const questions = [
   {
@@ -17,9 +18,7 @@ const questions = [
   },
 ];
 
-function Forum() {
-  const [questionsArray, setQuestionsArray] = useState(questions);
-
+function Forum({ questionsArray, setQuestionsArray }) {
   function addQuestion(newQuestion) {
     const updatedQuestions = questionsArray.map((question) => ({
       ...question,
@@ -36,12 +35,5 @@ function Forum() {
     </div>
   );
 }
-// function Input({ questionsArray }) {
-//   const [text, setText] = useState("");
 
-// const [toDo, setToDo] = useState([]);
-// const addToDo = (text) => {
-//   const newTodos = [...toDo, text];
-//   console.log(newTodos);
-//   setToDo(newTodos);
 export default Forum;
