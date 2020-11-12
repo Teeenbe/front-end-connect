@@ -32,9 +32,9 @@ function App() {
     <Router>
       <div className="App">
         <nav>
-          <a href="/">
+          <Link to="/">
             <TitleImage id="TitleImage" />
-          </a>
+          </Link>
           <div className="Sidebar">
             <Link className="Profiles" to="/profiles">
               Profiles
@@ -48,7 +48,7 @@ function App() {
           <Route path="/profiles">
             <Profiles />
           </Route>
-
+          {/* Creating a page and creating a route for each question in the array */}
           {questionsArray.map((q, index) => {
             console.log(q, index);
             return (

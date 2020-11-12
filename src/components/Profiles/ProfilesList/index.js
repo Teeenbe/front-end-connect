@@ -3,19 +3,48 @@ import React, { useState } from "react";
 import ProfileItem from "../ProfileItem";
 
 function ProfilesList({ profiles }) {
-  const [selectedInterest, setSelectedInterest] = useState("");
+  const [selectedInterest, setSelectedInterest] = useState("All");
+
+  // Renders the list of profile item components when called
+  function renderProfiles({
+    id,
+    type,
+    firstName,
+    lastName,
+    aboutMe,
+    interests,
+    experience,
+    emailAddress,
+  }) {
+    return (
+      <div>
+        <br />
+        <ProfileItem
+          key={id}
+          type={type}
+          firstName={firstName}
+          lastName={lastName}
+          aboutMe={aboutMe}
+          interests={interests}
+          experience={experience}
+          emailAddress={emailAddress}
+        />
+        <br />
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2>Search By Interest</h2>
       <select
         id="filter-menu"
+        defaultValue="All"
         onChange={(event) => {
           setSelectedInterest(event.target.value);
         }}
       >
-        <option value="" disabled selected>
-          All
-        </option>
+        <option value="All">All</option>
         <option value="Front-end">Front-end</option>
         <option value="Back-end">Back-end</option>
         <option value="DevOps">DevOps</option>
@@ -23,40 +52,14 @@ function ProfilesList({ profiles }) {
         <option value="JavaScript">JavaScript</option>
         <option value="Game Development">Game Development</option>
       </select>
-      {console.log(selectedInterest)}
-      {profiles.filter(({ interests }) => interests.includes(selectedInterest))
-        .map(
-          ({
-            id,
-            type,
-            firstName,
-            lastName,
-            aboutMe,
-            interests,
-            experience,
-            emailAddress,
-          }) => {
-            return (
-              <div>
-                <br />
-                <ProfileItem
-                  key={id}
-                  type={type}
-                  firstName={firstName}
-                  lastName={lastName}
-                  aboutMe={aboutMe}
-                  interests={interests}
-                  experience={experience}
-                  emailAddress={emailAddress}
-                />
-                <br />
-              </div>
-            );
-          }
-        )}
+      {/* If no filter, render all profiles. Else, filter profiles by interest */}
+      {selectedInterest === "All"
+        ? profiles.map(renderProfiles)
+        : profiles
+            .filter(({ interests }) => interests.includes(selectedInterest))
+            .map(renderProfiles)}
     </div>
   );
 }
 
 export default ProfilesList;
-

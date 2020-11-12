@@ -5,6 +5,7 @@ function QuestionPage({ question, id }) {
   const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
 
+  // Sends GET request to API at question ID path and sets comments state to response data
   async function getComments() {
     const res = await fetch(`http://localhost:5000/forum/${id}`);
     const { payload } = await res.json();
@@ -12,10 +13,12 @@ function QuestionPage({ question, id }) {
     setComments(payload);
   }
 
+  // GETs comments on page load-up
   useEffect(() => {
     getComments();
   }, []);
 
+  // Sends POST request to API at question ID path and calls getComments again
   async function addComment() {
     const commentsToPOST =
       comments === undefined
@@ -31,6 +34,7 @@ function QuestionPage({ question, id }) {
     console.log(payload);
   }
 
+  // Sends DELETE request to API at comment ID path and calls getComments again
   async function removeComment(commentId) {
     const res = await fetch(`http://localhost:5000/forum/${id}/${commentId}`, {
       method: "DELETE",
