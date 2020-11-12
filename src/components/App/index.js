@@ -26,7 +26,7 @@ const questions = [
 ];
 
 function App() {
-  const [questionsArray, setQuestionsArray] = useState(questions);
+  const [questionsArray, setQuestionsArray] = useState([]);
 
   return (
     <Router>
@@ -75,3 +75,7 @@ function App() {
 }
 
 export default App;
+
+// Questions in the API
+// Get questions and display - GET to /forum
+// Add questions - update API data - POST to /forum
