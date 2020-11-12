@@ -18,7 +18,6 @@ const questions = [
   },
 ];
 
-
 function Forum() {
   const [questionsArray, setQuestionsArray] = useState(questions);
 
@@ -31,16 +30,12 @@ function Forum() {
   }
 
   return (
-    <Router> <div>
-    <h1 id="questionForum">Question Forum</h1>
-    <List questionsArray={questionsArray} />
-    <Form addQuestion={addQuestion} />
-    <Switch>
-
-    </Switch>
-  </div>
-);</Router>
-   
+    <div>
+      <h1 id="questionForum">Question Forum</h1>
+      <List questionsArray={questionsArray} />
+      <Form addQuestion={addQuestion} />
+    </div>
+  );
 }
 
 export default Forum;

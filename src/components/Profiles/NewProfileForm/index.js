@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Form.css";
+import "./NewProfileForm.css";
 
 // user profile template
 const blankUser = {
