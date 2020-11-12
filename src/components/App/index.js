@@ -26,7 +26,7 @@ import QuestionPage from "../Forum/QuestionPage";
 // ];
 
 function App() {
-  const [questionsArray, setQuestionsArray] = useState(questions);
+  const [questionsArray, setQuestionsArray] = useState([]);
 
   return (
     <Router>

@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 
 function QuestionPage({ question, id }) {
-  const [comments, setComments] = useState([
-    {
-      index: 0,
-      text: "no comment yet",
-    },
-  ]);
+  const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
 
   async function getComments() {
@@ -21,6 +16,21 @@ function QuestionPage({ question, id }) {
     getComments();
   }, []);
 
+  async function addComment() {
+    const commentsToPOST =
+      comments === undefined
+        ? [{ id: 0, text: text }]
+        : [...comments, { id: comments.length, text: text }];
+    setComments(commentsToPOST);
+    const res = await fetch(`http://localhost:5000/forum/${id}`, {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify({ payload: commentsToPOST }),
+    });
+    const { payload } = await res.json();
+    console.log(payload);
+  }
+
   async function removeComment(commentId) {
     const res = await fetch(`http://localhost:5000/forum/${id}/${commentId}`, {
       method: "DELETE",
@@ -28,7 +38,6 @@ function QuestionPage({ question, id }) {
     const data = await res.json();
     console.log(data);
     getComments();
-    // setComments([...comments.slice(0, id), ...comments.slice(id + 1)]);
   }
 
   return (
@@ -44,13 +53,7 @@ function QuestionPage({ question, id }) {
         placeholder="Leave your Comment..."
         onChange={(e) => setText(e.target.value)}
       ></textarea>
-      <button
-        onClick={() =>
-          setComments([...comments, { id: comments.length, text: text }])
-        }
-      >
-        Submit
-      </button>
+      <button onClick={addComment}>Submit</button>
       {console.log(comments)}
     </div>
   );
