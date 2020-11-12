@@ -10,20 +10,20 @@ import Home from "../Home";
 
 import QuestionPage from "../Forum/QuestionPage";
 
-const questions = [
-  {
-    id: 0,
-    name: "Bryan",
-    topic: "React",
-    question: "sos",
-  },
-  {
-    id: 1,
-    name: "Jess",
-    topic: "Functions",
-    question: "why is this not working?",
-  },
-];
+// const questions = [
+//   {
+//     id: 0,
+//     name: "Bryan",
+//     topic: "React",
+//     question: "sos",
+//   },
+//   {
+//     id: 1,
+//     name: "Jess",
+//     topic: "Functions",
+//     question: "why is this not working?",
+//   },
+// ];
 
 function App() {
   const [questionsArray, setQuestionsArray] = useState([]);

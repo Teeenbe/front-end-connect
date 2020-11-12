@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Form from "./Form";
 import List from "./List";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // const questions = [
 //   {
@@ -26,7 +25,9 @@ function Forum({ questionsArray, setQuestionsArray }) {
     setQuestionsArray(payload);
   }
 
-  useEffect(getQuestions, []);
+  useEffect(() => {
+    getQuestions();
+  }, []);
 
   async function addQuestion(newQuestion) {
     const updatedQuestions = questionsArray.map((question) => ({
@@ -34,7 +35,7 @@ function Forum({ questionsArray, setQuestionsArray }) {
     }));
     updatedQuestions.push(newQuestion);
     console.log(updatedQuestions);
-    const res = await fetch("http://localhost:5000/forum/", {
+    await fetch("http://localhost:5000/forum/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
