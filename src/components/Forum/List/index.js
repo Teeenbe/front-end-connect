@@ -11,7 +11,7 @@ function List({ questionsArray }) {
       {questionsArray.map((item, index) => {
         return (
           <div>
-            <Link to={`/Forum/${index}`}>
+            <Link to={`/forum/${index}`}>
               <ListItem
                 Name={item.name}
                 Topic={item.topic}

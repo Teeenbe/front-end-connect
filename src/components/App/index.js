@@ -25,7 +25,6 @@ const questions = [
   },
 ];
 
-
 function App() {
   const [questionsArray, setQuestionsArray] = useState(questions);
 
@@ -53,14 +52,17 @@ function App() {
           {questionsArray.map((q, index) => {
             console.log(q, index);
             return (
-              <Route path={`/Forum/${index}`}>
-                <QuestionPage question={q}/>
+              <Route path={`/forum/${index}`}>
+                <QuestionPage question={q} />
               </Route>
-            )
+            );
           })}
 
           <Route path="/forum">
-            <Forum questionsArray={questionsArray} setQuestionsArray={setQuestionsArray} />
+            <Forum
+              questionsArray={questionsArray}
+              setQuestionsArray={setQuestionsArray}
+            />
           </Route>
 
           <Route path="/">
