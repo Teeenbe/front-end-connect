@@ -9,6 +9,7 @@ function ProfileItem({
   interests,
   experience,
   emailAddress,
+  deleteProfile,
 }) {
   return (
     <div className="profile">

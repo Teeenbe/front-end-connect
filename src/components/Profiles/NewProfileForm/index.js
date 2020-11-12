@@ -3,7 +3,7 @@ import "./NewProfileForm.css";
 
 // user profile template
 const blankUser = {
-  id: 3,
+  id: null,
   type: "",
   firstName: "",
   lastName: "",

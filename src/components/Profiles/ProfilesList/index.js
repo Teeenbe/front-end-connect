@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import ProfileItem from "../ProfileItem";
 
-function ProfilesList({ profiles }) {
+function ProfilesList({ profiles, deleteProfile }) {
   const [selectedInterest, setSelectedInterest] = useState("All");
 
   // Renders the list of profile item components when called
@@ -20,7 +20,7 @@ function ProfilesList({ profiles }) {
       <div>
         <br />
         <ProfileItem
-          key={id}
+          id={id}
           type={type}
           firstName={firstName}
           lastName={lastName}
@@ -28,6 +28,7 @@ function ProfilesList({ profiles }) {
           interests={interests}
           experience={experience}
           emailAddress={emailAddress}
+          deleteProfile={deleteProfile}
         />
         <br />
       </div>
