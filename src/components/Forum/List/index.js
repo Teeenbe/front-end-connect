@@ -7,26 +7,24 @@ function List({ questionsArray }) {
   return (
     //<Router>
 
-      <div>
-        {questionsArray.map((item, index) => {
-          return (
-            <div>
-              <Link to ={`/Forum/${index}`}>
-                <ListItem
-                  Name={item.name}
-                  Topic={item.topic}
-                  Question={item.question}
-                  key={item.id}
-                /> 
-              </Link>       
-            </div>
-          );
-        })}
-        
-      </div>
+    <div>
+      {questionsArray.map((item, index) => {
+        return (
+          <div>
+            <Link to={`/Forum/${index}`}>
+              <ListItem
+                Name={item.name}
+                Topic={item.topic}
+                Question={item.question}
+                key={item.id}
+              />
+            </Link>
+          </div>
+        );
+      })}
+    </div>
 
     //</Router>
-          
   );
 }
 

@@ -12,20 +12,20 @@ function ProfileItem({
 }) {
   return (
     <div className="profile">
-      <ul>
-        <li>Type: {type}</li>
-        <li>
+      <ul className="li">
+        <li className="li">Type: {type}</li>
+        <li className="li">
           Name: {firstName} {lastName}
         </li>
-        <li>About Me: {aboutMe}</li>
-        <li>
+        <li className="li">About Me: {aboutMe}</li>
+        <li className="li">
           Interests:{" "}
           {interests.map((interest) => {
             return `${interest}, `;
           })}
         </li>
-        <li>Experience: {experience}</li>
-        <li>Email Address: {emailAddress}</li>
+        <li className="li">Experience: {experience}</li>
+        <li className="li">Email Address: {emailAddress}</li>
       </ul>
     </div>
   );

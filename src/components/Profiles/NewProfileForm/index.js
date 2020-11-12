@@ -95,83 +95,92 @@ function NewProfileForm({ addProfile }) {
   }
 
   return (
-    <form id="new-profile-form" onSubmit={(event) => handleSubmit(event)}>
-      <fieldset>
-        <legend>New Profile:</legend>
-        <label htmlFor="mentor-or-mentee">
-          Mentor or Mentee?
+    <div>
+      <form id="new-profile-form" onSubmit={(event) => handleSubmit(event)}>
+        <fieldset id="fieldset">
+          <legend className="newProfile" id="Prof">
+            New Profile:
+          </legend>
+          <label className="newProfile" htmlFor="mentor-or-mentee">
+            Mentor or Mentee?
+            <br />
+            <select
+              className="drop-down"
+              id="mentor-or-mentee"
+              onChange={(e) => experienceInput(e.target.value)}
+            >
+              <option value="">--Please choose an option--</option>
+              <option value="Mentor">Mentor</option>
+              <option value="Mentee">Mentee</option>
+            </select>
+          </label>
           <br />
-          <select
-            className="drop-down"
-            id="mentor-or-mentee"
-            onChange={(e) => experienceInput(e.target.value)}
-          >
-            <option value="">--Please choose an option--</option>
-            <option value="Mentor">Mentor</option>
-            <option value="Mentee">Mentee</option>
-          </select>
-        </label>
-        <br />
-        <label htmlFor="firstName">
-          First Name
+          <label className="newProfile" htmlFor="firstName">
+            First Name
+            <br />
+            <input id="firstName" onChange={(event) => populateObject(event)} />
+          </label>
           <br />
-          <input id="firstName" onChange={(event) => populateObject(event)} />
-        </label>
-        <br />
-        <label htmlFor="lastName">
-          Last Name
+          <label className="newProfile" htmlFor="lastName">
+            Last Name
+            <br />
+            <input id="lastName" onChange={(event) => populateObject(event)} />
+          </label>
           <br />
-          <input id="lastName" onChange={(event) => populateObject(event)} />
-        </label>
-        <br />
-        <label htmlFor="emailAddress">
-          Email Address
+          <label className="newProfile" htmlFor="emailAddress">
+            Email Address
+            <br />
+            <input
+              id="emailAddress"
+              onChange={(event) => populateObject(event)}
+            />
+          </label>
           <br />
-          <input
-            id="emailAddress"
-            onChange={(event) => populateObject(event)}
-          />
-        </label>
-        <br />
-        <br />
-        <label htmlFor="experience">
-          Experience
           <br />
-          {renderExperience()}
-        </label>
-        <br />
-        <label htmlFor="aboutMe">
-          About Me
+          <label className="newProfile" htmlFor="experience">
+            Experience
+            <br />
+            {renderExperience()}
+          </label>
           <br />
-          <textarea
-            id="aboutMe"
-            rows="5"
-            cols="50"
-            placeholder="Write a little about yourself..."
-            onChange={(event) => populateObject(event)}
-          ></textarea>
-        </label>
-        <br />
-        <br />
-        <label htmlFor="interests">Interests:</label>
-        {interests.map((interest, index) => {
-          return (
-            <div key={index}>
-              <input
-                type="checkbox"
-                id={interest}
-                value={interestsChecked[index]}
-                onChange={() => handleChange(index)}
-              />
-              <label htmlFor={interest}>{interest}</label>
-            </div>
-          );
-        })}
-        <br />
-        <br />
-        <input type="submit" value="Submit" />
-      </fieldset>
-    </form>
+          <label className="newProfile" htmlFor="aboutMe">
+            About Me
+            <br />
+            <textarea
+              id="aboutMe"
+              rows="5"
+              cols="50"
+              placeholder="Write a little about yourself..."
+              onChange={(event) => populateObject(event)}
+            ></textarea>
+          </label>
+          <br />
+          <br />
+          <label className="newProfile" htmlFor="interests">
+            Interests:
+          </label>
+          {interests.map((interest, index) => {
+            return (
+              <div className="newProfile" key={index}>
+                <input
+                  type="checkbox"
+                  className="newProfile"
+                  id={interest}
+                  value={interestsChecked[index]}
+                  onChange={() => handleChange(index)}
+                />
+                <label id="checkbox" htmlFor={interest}>
+                  {interest}
+                </label>
+              </div>
+            );
+          })}
+          <br />
+          <br />
+          <input id="submitButton" type="submit" value="Submit" />
+        </fieldset>
+      </form>
+    </div>
   );
 }
 
