@@ -2,6 +2,7 @@ import React from "react";
 import "./ProfileItem.css";
 
 function ProfileItem({
+  id,
   type,
   firstName,
   lastName,
@@ -9,6 +10,7 @@ function ProfileItem({
   interests,
   experience,
   emailAddress,
+  deleteProfile,
 }) {
   return (
     <div className="profile">
@@ -27,6 +29,7 @@ function ProfileItem({
         <li className="li">Experience: {experience}</li>
         <li className="li">Email Address: {emailAddress}</li>
       </ul>
+      <button onClick={() => deleteProfile(id)}>Delete</button>
     </div>
   );
 }

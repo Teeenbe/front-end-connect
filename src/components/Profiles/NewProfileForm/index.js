@@ -4,7 +4,6 @@ import Dropzone from "../../Dropzone";
 
 // user profile template
 const blankUser = {
-  id: 3,
   type: "",
   firstName: "",
   lastName: "",
