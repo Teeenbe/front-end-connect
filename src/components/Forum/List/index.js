@@ -5,18 +5,18 @@ import { Link } from "react-router-dom";
 function List({ questionsArray, deleteQuestion }) {
   return (
     <div>
-      {questionsArray.map((item, index) => {
+      {questionsArray.map((q) => {
         return (
           <div>
-            <Link to={`/forum/${index}`}>
+            <Link to={`/forum/${q.id}`}>
               <ListItem
-                Name={item.name}
-                Topic={item.topic}
-                Question={item.question}
-                key={item.id}
+                Name={q.name}
+                Topic={q.topic}
+                Question={q.question}
+                key={q.id}
               />
             </Link>
-            <button onClick={() => deleteQuestion(index)}>Delete</button>
+            <button onClick={() => deleteQuestion(q.id)}>Delete</button>
           </div>
         );
       })}
