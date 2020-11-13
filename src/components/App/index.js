@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     async function getQuestions() {
-      const res = await fetch("http://localhost:5000/forum/");
+      const res = await fetch("http://localhost:5000/forum");
       const { payload } = await res.json();
       setQuestionsArray(payload);
     }
