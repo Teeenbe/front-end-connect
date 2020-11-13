@@ -19,7 +19,7 @@ import List from "./List";
 
 function Forum({ questionsArray, setQuestionsArray }) {
   async function getQuestions() {
-    const res = await fetch("http://localhost:5000/forum/");
+    const res = await fetch("http://localhost:5000/forum");
     const { payload } = await res.json();
     console.log(payload);
     setQuestionsArray(payload);
@@ -30,7 +30,7 @@ function Forum({ questionsArray, setQuestionsArray }) {
   // }, []);
 
   async function addQuestion(newQuestion) {
-    const res = await fetch("http://localhost:5000/forum/", {
+    const res = await fetch("http://localhost:5000/forum", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ payload: newQuestion }),
@@ -49,13 +49,18 @@ function Forum({ questionsArray, setQuestionsArray }) {
     }
   }
 
-  async function deleteQuestion(id) {
-    const res = await fetch(`http://localhost:5000/forum/${id}`, {
+  async function deleteQuestion(questionId) {
+    const res = await fetch(`http://localhost:5000/forum/${questionId}`, {
       method: "DELETE",
     });
-    const data = await res.json();
-    console.log(data);
-    getQuestions();
+    const { success } = await res.json();
+    if (success) {
+      setQuestionsArray(questionsArray.filter(({ id }) => id !== questionId));
+      console.log(questionsArray);
+    }
+    if (!success) {
+      console.log("There was an error deleting the question!");
+    }
   }
 
   return (

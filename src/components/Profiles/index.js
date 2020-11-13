@@ -53,7 +53,7 @@ function Profiles() {
 
   // GETs all profiles
   async function getProfiles() {
-    const res = await fetch("http://localhost:5000/profiles/");
+    const res = await fetch("http://localhost:5000/profiles");
     const { payload } = await res.json();
     console.log(payload);
     setProfiles(payload);
@@ -64,7 +64,7 @@ function Profiles() {
 
   // Sends POST request to API at /profiles - if successful, updates state
   async function addProfile(newProfile) {
-    const res = await fetch("http://localhost:5000/profiles/", {
+    const res = await fetch("http://localhost:5000/profiles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ payload: newProfile }),
@@ -82,13 +82,22 @@ function Profiles() {
   }
 
   // WIP - Sends DELETE request to API at target profile ID path
-  async function deleteProfile(id) {
-    await fetch(`http://localhost:5000/profiles/${id}`, { method: "DELETE" });
+  async function deleteProfile(profileId) {
+    const res = await fetch(`http://localhost:5000/profiles/${profileId}`, {
+      method: "DELETE",
+    });
+    const { success } = await res.json();
+    if (success) {
+      setProfiles(profiles.filter(({ id }) => id !== profileId));
+      console.log(profiles);
+    }
+    if (!success) {
+      console.log("There was an error deleting the profile!");
+    }
   }
-
   return (
     <div>
-      <NewProfileForm profiles={profiles} addProfile={addProfile} />
+      <NewProfileForm addProfile={addProfile} />
       <ProfilesList profiles={profiles} deleteProfile={deleteProfile} />
     </div>
   );

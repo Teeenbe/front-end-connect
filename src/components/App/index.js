@@ -35,6 +35,7 @@ function App() {
       setQuestionsArray(payload);
     }
     getQuestions();
+    console.log(questionsArray);
   }, []);
 
   return (
@@ -61,7 +62,7 @@ function App() {
           {questionsArray.map((q) => {
             console.log(q.id);
             return (
-              <Route path={`/forum/${q.id - 1}`}>
+              <Route path={`/forum/${q.id}`}>
                 <QuestionPage question={q} id={q.id} />
               </Route>
             );

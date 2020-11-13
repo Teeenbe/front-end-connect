@@ -44,13 +44,14 @@ function QuestionPage({ question, id }) {
   }
 
   // Sends DELETE request to API at comment ID path and calls getComments again
-  async function removeComment(commentId) {
+  async function deleteComment(commentId) {
     const res = await fetch(`http://localhost:5000/forum/${id}/${commentId}`, {
       method: "DELETE",
     });
     const { success } = await res.json();
     if (success) {
       setComments(comments.filter(({ id }) => id !== commentId));
+      console.log(comments);
     }
     if (!success) {
       console.log("There was an error deleting the comment!");
@@ -62,9 +63,9 @@ function QuestionPage({ question, id }) {
       <p>Question</p>
       <p>{question.question}</p>
       <p>{question.name}</p>
-      {comments.map(({ id, text }) => {
+      {comments?.map(({ id, text }) => {
         return (
-          <CommentItem id={id} text={text} removeComment={removeComment} />
+          <CommentItem id={id} text={text} deleteComment={deleteComment} />
         );
       })}
       {/* <Comment list={comments} deleteFn={removeComment} /> */}

@@ -20,6 +20,7 @@ function ProfilesList({ profiles, deleteProfile }) {
       <div>
         <br />
         <ProfileItem
+          key={id}
           id={id}
           type={type}
           firstName={first_name}
