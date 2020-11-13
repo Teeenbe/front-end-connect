@@ -72,7 +72,8 @@ function Profiles() {
     const { success } = await res.json();
     if (success) {
       const updatedProfiles = profiles.map((profile) => ({ ...profile }));
-      updatedProfiles.unshift({ ...newProfile });
+      updatedProfiles.push({ ...newProfile });
+      console.log("Success!");
       setProfiles(updatedProfiles);
     }
     if (!success) {

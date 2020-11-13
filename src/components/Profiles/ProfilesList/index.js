@@ -9,12 +9,12 @@ function ProfilesList({ profiles, deleteProfile }) {
   function renderProfiles({
     id,
     type,
-    firstName,
-    lastName,
-    aboutMe,
+    first_name,
+    last_name,
+    about_me,
     interests,
     experience,
-    emailAddress,
+    email_address,
   }) {
     return (
       <div>
@@ -22,12 +22,12 @@ function ProfilesList({ profiles, deleteProfile }) {
         <ProfileItem
           id={id}
           type={type}
-          firstName={firstName}
-          lastName={lastName}
-          aboutMe={aboutMe}
+          firstName={first_name}
+          lastName={last_name}
+          aboutMe={about_me}
           interests={interests}
           experience={experience}
-          emailAddress={emailAddress}
+          emailAddress={email_address}
           deleteProfile={deleteProfile}
         />
         <br />
