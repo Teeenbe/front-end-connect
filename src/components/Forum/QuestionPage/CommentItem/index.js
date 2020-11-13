@@ -2,9 +2,10 @@ import React from "react";
 
 function CommentItem({ id, text, deleteComment }) {
   return (
-    <div>
-      <p>{text}</p>
+    <div id="commentItemId">
+      <p id="commentP">{text}</p>
       <button
+        id="deleteComment"
         onClick={() => {
           deleteComment(id);
         }}

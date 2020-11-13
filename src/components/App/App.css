@@ -2,6 +2,78 @@
   margin: left;
 }
 
+body {
+  background-image: url("./backgroundImage.jpg");
+}
+
+.homeImage2 {
+  position: absolute;
+  width: auto;
+  height: 400px;
+  left: 900px;
+  bottom: 0px;
+  border-radius: 50%;
+  filter: grayscale(80%);
+}
+
+.homeImage3 {
+  position: absolute;
+  width: auto;
+  height: 400px;
+  left: 600px;
+  bottom: 100px;
+  border-radius: 50%;
+  filter: grayscale(80%);
+}
+
+.homeImage1 {
+  position: absolute;
+  width: auto px;
+  height: 300px;
+  left: 1150px;
+  bottom: 300px;
+  border-radius: 50%;
+  filter: grayscale(80%);
+}
+
+.deleteQuestionButton {
+  box-shadow: inset -3px 2px 0px -2px #ff9900;
+  background: linear-gradient(to bottom, #ffa200 5%, #ff9900 100%);
+  background-color: #ffa200;
+  border-radius: 28px;
+  border: 2px solid #d68c0b;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 11px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #634b1a;
+  margin-left: 600px;
+  margin-top: 0px;
+}
+
+.deleteQuestionButton:hover {
+  box-shadow: inset -3px 2px 0px -2px #ff9900;
+  background: linear-gradient(to bottom, #ffa200 5%, #ff9900 100%);
+  background-color: #ffa200;
+  border-radius: 28px;
+  border: 2px solid #d68c0b;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 11px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #634b1a;
+  margin-left: 600px;
+  margin-top: 0px;
+}
+
 .TitleImage {
   text-decoration: none;
   position: absolute;
@@ -23,6 +95,29 @@
   top: 610px;
 
   background: #18a2ef;
+  box-sizing: border-box;
+  border-radius: 50px 50px 50px 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 60px;
+  /* letter-spacing: -0.045em; */
+
+  color: #fffdfd;
+  text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+}
+
+.Mentor:hover {
+  position: absolute;
+  width: 430px;
+  height: 60px;
+  left: 70px;
+  top: 610px;
+
+  background: orange;
   box-sizing: border-box;
   border-radius: 50px 50px 50px 50px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -92,7 +187,6 @@
 }
 
 * {
-  background: white;
   text-align: center;
 }
 

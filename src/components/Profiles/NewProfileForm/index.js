@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./NewProfileForm.css";
+import Dropzone from "../../Dropzone";
 
 // user profile template
 const blankUser = {
@@ -36,6 +37,11 @@ function NewProfileForm({ addProfile }) {
 
   function populateObject(event) {
     setNewProfile({ ...newProfile, [event.target.id]: event.target.value });
+  }
+
+  function addProfileImage(file) {
+    setNewProfile({ ...newProfile, image: file });
+    console.log(file);
   }
 
   //
@@ -125,6 +131,8 @@ function NewProfileForm({ addProfile }) {
             <br />
             <input id="lastName" onChange={(event) => populateObject(event)} />
           </label>
+          <br />
+          <Dropzone onSelectedFile={(file) => addProfileImage(file)} />
           <br />
           <label className="newProfile" htmlFor="emailAddress">
             Email Address
