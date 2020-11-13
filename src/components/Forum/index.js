@@ -25,25 +25,28 @@ function Forum({ questionsArray, setQuestionsArray }) {
     setQuestionsArray(payload);
   }
 
-  useEffect(() => {
-    getQuestions();
-  }, []);
+  // useEffect(() => {
+  //   getQuestions();
+  // }, []);
 
   async function addQuestion(newQuestion) {
-    const updatedQuestions = questionsArray.map((question) => ({
-      ...question,
-    }));
-    updatedQuestions.unshift(newQuestion);
-    console.log(updatedQuestions);
-    await fetch("http://localhost:5000/forum/", {
+    const res = await fetch("http://localhost:5000/forum/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: "Incoming data",
-        payload: updatedQuestions,
-      }),
+      body: JSON.stringify({ payload: newQuestion }),
     });
-    getQuestions();
+    const { success } = await res.json();
+    if (success) {
+      const updatedQuestions = questionsArray.map((question) => ({
+        ...question,
+      }));
+      updatedQuestions.push({ ...newQuestion });
+      console.log(updatedQuestions);
+      setQuestionsArray(updatedQuestions);
+    }
+    if (!success) {
+      console.log("There was an error adding the question!");
+    }
   }
 
   async function deleteQuestion(id) {

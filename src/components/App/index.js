@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import TitleImage from "./TitleImage";
 
@@ -28,6 +28,15 @@ import QuestionPage from "../Forum/QuestionPage";
 function App() {
   const [questionsArray, setQuestionsArray] = useState([]);
 
+  useEffect(() => {
+    async function getQuestions() {
+      const res = await fetch("http://localhost:5000/forum/");
+      const { payload } = await res.json();
+      setQuestionsArray(payload);
+    }
+    getQuestions();
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -49,11 +58,11 @@ function App() {
             <Profiles />
           </Route>
           {/* Creating a page and creating a route for each question in the array */}
-          {questionsArray.map((q, index) => {
-            console.log(q, index);
+          {questionsArray.map((q) => {
+            console.log(q.id);
             return (
-              <Route path={`/forum/${index}`}>
-                <QuestionPage question={q} id={index} />
+              <Route path={`/forum/${q.id - 1}`}>
+                <QuestionPage question={q} id={q.id} />
               </Route>
             );
           })}
