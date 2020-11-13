@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Comment from "./Comment";
+import CommentItem from "./CommentItem";
 
 function QuestionPage({ question, id }) {
   const [comments, setComments] = useState([]);
@@ -48,9 +48,13 @@ function QuestionPage({ question, id }) {
     const res = await fetch(`http://localhost:5000/forum/${id}/${commentId}`, {
       method: "DELETE",
     });
-    const data = await res.json();
-    console.log(data);
-    getComments();
+    const { success } = await res.json();
+    if (success) {
+      setComments(comments.filter(({ id }) => id !== commentId));
+    }
+    if (!success) {
+      console.log("There was an error deleting the comment!");
+    }
   }
 
   return (
@@ -58,7 +62,12 @@ function QuestionPage({ question, id }) {
       <p>Question</p>
       <p>{question.question}</p>
       <p>{question.name}</p>
-      <Comment list={comments} deleteFn={removeComment} />
+      {comments.map(({ id, text }) => {
+        return (
+          <CommentItem id={id} text={text} removeComment={removeComment} />
+        );
+      })}
+      {/* <Comment list={comments} deleteFn={removeComment} /> */}
       <textarea
         id="comment"
         rows="5"

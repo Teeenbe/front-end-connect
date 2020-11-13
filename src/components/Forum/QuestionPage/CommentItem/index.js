@@ -1,12 +1,12 @@
 import React from "react";
 
-function CommentItem({ comment, deleteFn, index }) {
+function CommentItem({ id, text, removeComment }) {
   return (
     <div>
-      <p>{comment}</p>
+      <p>{text}</p>
       <button
         onClick={() => {
-          deleteFn(index);
+          removeComment(id);
         }}
       >
         Delete
