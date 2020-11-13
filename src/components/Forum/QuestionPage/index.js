@@ -63,11 +63,18 @@ function QuestionPage({ question, id }) {
       <p id="QuestionP">Question</p>
       <p className="question1">{question.question}</p>
       <p className="question1">{question.name}</p>
-      {comments?.map(({ id, text }) => {
-        return (
-          <CommentItem {/*id="CommentId"*/} id={id} text={text} deleteComment={deleteComment} />
-        );
-      })}
+      <ul className="commentDiv">
+        {comments?.map(({ id, text }) => {
+          return (
+            <CommentItem
+              id="CommentId"
+              commentId={id}
+              text={text}
+              deleteComment={deleteComment}
+            />
+          );
+        })}
+      </ul>
       {/* <Comment list={comments} deleteFn={removeComment} /> */}
       <textarea
         id="comment"
@@ -76,7 +83,10 @@ function QuestionPage({ question, id }) {
         placeholder="Leave your Comment..."
         onChange={(e) => setText(e.target.value)}
       ></textarea>
-      <button id="forumButton" onClick={() => addComment({ text: text, question_id: id })}>
+      <button
+        id="forumButton"
+        onClick={() => addComment({ text: text, question_id: id })}
+      >
         Submit
       </button>
       {console.log(comments)}

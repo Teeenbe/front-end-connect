@@ -18,7 +18,7 @@ function List({ questionsArray, deleteQuestion }) {
             </Link>
             <button
               className="deleteQuestionButton"
-              onClick={() => deleteQuestion(index)}
+              onClick={() => deleteQuestion(q.id)}
             >
               Delete
             </button>

@@ -29,7 +29,12 @@ function ProfileItem({
         <li className="li">Experience: {experience}</li>
         <li className="li">Email Address: {emailAddress}</li>
       </ul>
-      <button onClick={() => deleteProfile(id)}>Delete</button>
+      <button
+        className="deleteQuestionButton"
+        onClick={() => deleteProfile(id)}
+      >
+        Delete
+      </button>
     </div>
   );
 }
