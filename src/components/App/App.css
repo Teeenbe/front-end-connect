@@ -28,7 +28,7 @@ body {
 
 .homeImage1 {
   position: absolute;
-  width: auto;
+  width: auto px;
   height: 300px;
   left: 1150px;
   bottom: 300px;
