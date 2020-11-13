@@ -16,7 +16,12 @@ function List({ questionsArray, deleteQuestion }) {
                 key={item.id}
               />
             </Link>
-            <button onClick={() => deleteQuestion(index)}>Delete</button>
+            <button
+              className="deleteQuestionButton"
+              onClick={() => deleteQuestion(index)}
+            >
+              Delete
+            </button>
           </div>
         );
       })}

@@ -41,11 +41,11 @@ function QuestionPage({ question, id }) {
   }
 
   return (
-    <div>
-      <p>Question</p>
-      <p>{question.question}</p>
-      <p>{question.name}</p>
-      <Comment list={comments} deleteFn={removeComment} />
+    <div id="questionSubmitBox">
+      <p id="QuestionP">Question </p>
+      <p className="question1">{question.question}</p>
+      <p className="question1">{question.name}</p>
+      <Comment id="CommentId" list={comments} deleteFn={removeComment} />
       <textarea
         id="comment"
         rows="5"
@@ -53,7 +53,9 @@ function QuestionPage({ question, id }) {
         placeholder="Leave your Comment..."
         onChange={(e) => setText(e.target.value)}
       ></textarea>
-      <button onClick={addComment}>Submit</button>
+      <button id="forumButton" onClick={addComment}>
+        Submit
+      </button>
       {console.log(comments)}
     </div>
   );

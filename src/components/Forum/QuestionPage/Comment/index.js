@@ -4,7 +4,7 @@ import CommentItem from "../CommentItem";
 function Comment({ list, deleteFn }) {
   return (
     <div>
-      <ul>
+      <ul id="commentDiv">
         {list?.map((item, index) => (
           <CommentItem comment={item.text} deleteFn={deleteFn} index={index} />
         ))}
