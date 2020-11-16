@@ -18,12 +18,12 @@ import List from "./List";
 // ];
 
 function Forum({ questionsArray, setQuestionsArray }) {
-  async function getQuestions() {
-    const res = await fetch("http://localhost:5000/forum");
-    const { payload } = await res.json();
-    console.log(payload);
-    setQuestionsArray(payload);
-  }
+  // async function getQuestions() {
+  //   const res = await fetch("http://localhost:5000/forum");
+  //   const { payload } = await res.json();
+  //   console.log(payload);
+  //   setQuestionsArray(payload);
+  // }
 
   // useEffect(() => {
   //   getQuestions();

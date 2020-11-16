@@ -28,7 +28,7 @@ body {
 
 .homeImage1 {
   position: absolute;
-  width: auto px;
+  width: auto;
   height: 300px;
   left: 1150px;
   bottom: 300px;
@@ -180,6 +180,10 @@ body {
   letter-spacing: -0.045em;
 
   color: darkgrey;
+}
+
+a {
+  text-decoration: none;
 }
 
 .Profiles:link {

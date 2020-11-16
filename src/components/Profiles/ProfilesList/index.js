@@ -40,6 +40,7 @@ function ProfilesList({ profiles, deleteProfile }) {
     <div>
       <h2>Search By Interest</h2>
       <select
+        className="drop-down"
         id="filter-menu"
         defaultValue="All"
         onChange={(event) => {
