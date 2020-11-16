@@ -14,7 +14,7 @@ function Home() {
           Support and guide bootcampers at the start of their coding journey.
         </p>
       </div>
-      <a className="Mentor" href="../Profiles">
+      <a className="Mentor" href="../profiles">
         Become a SOC mentor!
       </a>
     </div>

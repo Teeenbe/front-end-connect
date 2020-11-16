@@ -30,7 +30,7 @@ function Forum({ questionsArray, setQuestionsArray }) {
   // }, []);
 
   async function addQuestion(newQuestion) {
-    const res = await fetch("http://localhost:5000/forum", {
+    const res = await fetch("https://connect-soc.herokuapp.com/forum", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ payload: newQuestion }),
@@ -50,9 +50,12 @@ function Forum({ questionsArray, setQuestionsArray }) {
   }
 
   async function deleteQuestion(questionId) {
-    const res = await fetch(`http://localhost:5000/forum/${questionId}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `https://connect-soc.herokuapp.com/forum/${questionId}`,
+      {
+        method: "DELETE",
+      }
+    );
     const { success } = await res.json();
     if (success) {
       setQuestionsArray(questionsArray.filter(({ id }) => id !== questionId));
