@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Form from "./Form";
 import List from "./List";
+import { BACKEND_URL } from "../../config";
 
 // const questions = [
 //   {
@@ -19,7 +20,7 @@ import List from "./List";
 
 function Forum({ questionsArray, setQuestionsArray }) {
   // async function getQuestions() {
-  //   const res = await fetch("http://localhost:5000/forum");
+  //   const res = await fetch("BACKEND_URL/forum");
   //   const { payload } = await res.json();
   //   console.log(payload);
   //   setQuestionsArray(payload);
@@ -30,7 +31,7 @@ function Forum({ questionsArray, setQuestionsArray }) {
   // }, []);
 
   async function addQuestion(newQuestion) {
-    const res = await fetch("http://localhost:5000/forum", {
+    const res = await fetch(`${BACKEND_URL}/forum`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ payload: newQuestion }),
@@ -50,7 +51,7 @@ function Forum({ questionsArray, setQuestionsArray }) {
   }
 
   async function deleteQuestion(questionId) {
-    const res = await fetch(`http://localhost:5000/forum/${questionId}`, {
+    const res = await fetch(`${BACKEND_URL}/forum/${questionId}`, {
       method: "DELETE",
     });
     const { success } = await res.json();

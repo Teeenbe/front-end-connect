@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CommentItem from "./CommentItem";
+import { BACKEND_URL } from "../../../config";
 
 function QuestionPage({ question, id }) {
   const [comments, setComments] = useState([]);
@@ -8,7 +9,7 @@ function QuestionPage({ question, id }) {
   // Sends GET request to API at question ID path and sets comments state to response data
   async function getComments() {
     console.log(id);
-    const res = await fetch(`http://localhost:5000/forum/${id}`);
+    const res = await fetch(`${BACKEND_URL}/forum/${id}`);
     const { payload } = await res.json();
     console.log(payload);
     setComments(payload);
@@ -26,7 +27,7 @@ function QuestionPage({ question, id }) {
     //     ? [{ text: text, question_id: id }]
     //     : [...comments, { text: text, question_id: id }];
     // setComments(commentsToPOST);
-    const res = await fetch(`http://localhost:5000/forum/${id}`, {
+    const res = await fetch(`${BACKEND_URL}/forum/${id}`, {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({ payload: newComment }),
@@ -45,7 +46,7 @@ function QuestionPage({ question, id }) {
 
   // Sends DELETE request to API at comment ID path and calls getComments again
   async function deleteComment(commentId) {
-    const res = await fetch(`http://localhost:5000/forum/${id}/${commentId}`, {
+    const res = await fetch(`${BACKEND_URL}/forum/${id}/${commentId}`, {
       method: "DELETE",
     });
     const { success } = await res.json();

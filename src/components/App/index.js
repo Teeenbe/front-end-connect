@@ -10,6 +10,8 @@ import Home from "../Home";
 
 import QuestionPage from "../Forum/QuestionPage";
 
+import { BACKEND_URL } from "../../config";
+
 // const questions = [
 //   {
 //     id: 0,
@@ -30,7 +32,7 @@ function App() {
 
   useEffect(() => {
     async function getQuestions() {
-      const res = await fetch("http://localhost:5000/forum");
+      const res = await fetch(`${BACKEND_URL}/forum`);
       const { payload } = await res.json();
       setQuestionsArray(payload);
     }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import NewProfileForm from "./NewProfileForm";
 import ProfilesList from "./ProfilesList";
+import { BACKEND_URL } from "../../config";
 
 /* DATA TO DISPLAY
 
@@ -53,7 +54,7 @@ function Profiles() {
 
   // GETs all profiles
   async function getProfiles() {
-    const res = await fetch("https://connect-soc.herokuapp.com/profiles");
+    const res = await fetch(`${BACKEND_URL}/profiles`);
     const { payload } = await res.json();
     console.log(payload);
     setProfiles(payload);
@@ -64,7 +65,7 @@ function Profiles() {
 
   // Sends POST request to API at /profiles - if successful, updates state
   async function addProfile(newProfile) {
-    const res = await fetch("https://connect-soc.herokuapp.com/profiles", {
+    const res = await fetch(`${BACKEND_URL}/profiles`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ payload: newProfile }),
@@ -83,7 +84,7 @@ function Profiles() {
 
   // WIP - Sends DELETE request to API at target profile ID path
   async function deleteProfile(profileId) {
-    const res = await fetch(`https://connect-soc.herokuapp.com/${profileId}`, {
+    const res = await fetch(`${BACKEND_URL}/${profileId}`, {
       method: "DELETE",
     });
     const { success } = await res.json();
